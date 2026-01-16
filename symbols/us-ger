@@ -1,0 +1,17 @@
+xkb_symbols "us-ger"
+{
+  include "us(basic)"            // base US keys
+  include "level3(ralt_switch)"  // Right Alt = Level3
+
+  // Umlauts
+  key <LatA> { [ a, A, adiaeresis, Adiaeresis ] };   // ä Ä
+  key <LatO> { [ o, O, odiaeresis, Odiaeresis ] };   // ö Ö
+  key <LatU> { [ u, U, udiaeresis, Udiaeresis ] };   // ü Ü
+
+  // ß
+  key <LatS> { [ s, S, ssharp ] };                  // ß
+
+  // Euro
+  key <LatE> { [ e, E, EuroSign ] };                // €
+};
+
