@@ -4,17 +4,20 @@
 
 { config, pkgs, ... }:
 let
-  home-manager = builtins.fetchTarball { url = "https://github.com/nix-community/home-manager/archive/release-25.11.tar.gz"; sha256 = "04yamxkwdfjcz5dl8c6nayg1w6dhf325fdklbn09gymnzwzq5nml";};
+  home-manager = builtins.fetchTarball {
+    url = "https://github.com/nix-community/home-manager/archive/release-25.11.tar.gz";
+    sha256 = "04yamxkwdfjcz5dl8c6nayg1w6dhf325fdklbn09gymnzwzq5nml";
+  };
 in
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      # Include home manager
-      (import "${home-manager}/nixos")
-      # Include my modules
-      ./desktop-environment.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    # Include home manager
+    (import "${home-manager}/nixos")
+    # Include my modules
+    ./desktop-environment.nix
+  ];
 
   # Import home config.
   home-manager.users.jan = import ./home.nix;
@@ -80,9 +83,12 @@ in
   users.users.jan = {
     isNormalUser = true;
     description = "jan";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     packages = with pkgs; [
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
@@ -102,10 +108,10 @@ in
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-     neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-     htop
-     quickemu
-     # jetbrains.clion
+    neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    htop
+    quickemu
+    jetbrains.clion
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -136,6 +142,9 @@ in
   system.stateVersion = "25.11"; # Did you read the comment?
 
   # Enable flakes.
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
 }

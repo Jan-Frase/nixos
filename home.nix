@@ -1,11 +1,12 @@
-{ pkgs, ... }: 
+{ pkgs, ... }:
 {
   programs.bash.enable = true;
   # Check documentation before changing.
   home.stateVersion = "24.11";
 
-  home.packages = [
-    pkgs.git
+  home.packages = with pkgs; [
+    git
+    nixfmt
   ];
 
   programs.git = {
@@ -19,4 +20,3 @@
     };
   };
 }
-
