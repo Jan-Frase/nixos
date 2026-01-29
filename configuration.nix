@@ -4,7 +4,7 @@
 
 { config, pkgs, ... }:
 let
-  home-manager = builtins.fetchTarball https://github.com/nix-community/home-manager/archive/release-25.11.tar.gz;
+  home-manager = builtins.fetchTarball { url = "https://github.com/nix-community/home-manager/archive/release-25.11.tar.gz"; sha256 = "04yamxkwdfjcz5dl8c6nayg1w6dhf325fdklbn09gymnzwzq5nml";};
 in
 {
   imports =
@@ -105,6 +105,7 @@ in
      neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
      htop
      quickemu
+     # jetbrains.clion
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
