@@ -17,6 +17,7 @@
       user.email = "mrunkioiw@gmail.com";
       init.defaultBranch = "main";
       pull.rebase = true;
+      push.autoSetupRemote = true;
     };
   };
 }
